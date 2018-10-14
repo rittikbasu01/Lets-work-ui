@@ -1,0 +1,9 @@
+.carousel-control-next{
+    background-color: black;
+    }
+    .carousel-control-prev{
+    background-color: black;
+    }
+    .carousel-indicators {
+    display: none;
+    } 

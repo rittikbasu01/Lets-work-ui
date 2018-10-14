@@ -1,0 +1,57 @@
+<div class="container-fluid homeback" *ngIf="!spin; else spinner">
+  <div class="row">
+    <div class="col-md-8">
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-header bg-dark text-white">
+          Search
+        </div>
+        <div class="card-body">
+          <form [formGroup]="VenueSearchForm" (ngSubmit)="OnSearch()">
+            
+              <p-calendar  name="FromDate" showTime="true" hourFormat="24" formControlName="FromDate" placeholder="From Date and Time" ></p-calendar>
+            
+            <mat-error><span *ngIf="!this.GetFromDate.valid && this.GetFromDate.touched">Select proper date and time</span></mat-error>
+            <br>
+              <p-calendar  name="ToDate" showTime="true" hourFormat="24" formControlName="ToDate" placeholder="To Date and Time"></p-calendar>
+            <br>
+            <mat-error><span *ngIf="!this.GetToDate.valid && this.GetToDate.touched">Select proper date and time</span></mat-error>
+            <mat-form-field>
+              <input type="text" matInput placeholder="City" [matAutocomplete]="cityAutoComplete" formControlName="City" />
+              <mat-autocomplete #cityAutoComplete>
+                <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                  {{city}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <mat-error><span *ngIf="!this.GetCity.valid && this.GetCity.touched">Provide a city</span></mat-error>
+            <div class="row card-footer bg-light text-dark">
+              <div class="col-md-6">
+                <button mat-raised-button type="submit" [disabled]="!VenueSearchForm.valid" color="primary">Search</button>
+              </div>
+              <div class="col-md-6">
+                <button mat-raised-button type="reset" color="warn">Reset</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-4">
+      <div class="text-block">
+        <h1> Visneto </h1>
+        <br>
+        <h3>Great place to book your venue</h3>
+        <br>
+        <h3>Effortless booking for the needs of the freelancer</h3>
+      </div>
+    </div>
+
+  </div>
+</div>
+<ng-template #spinner>
+  <mat-spinner></mat-spinner>
+  Searching...
+</ng-template>

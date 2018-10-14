@@ -1,0 +1,46 @@
+.child {
+    display: inline-block;
+    background:blue;
+    margin:10px 0 0 2%;
+    margin-top: 50px;
+    flex-grow: 1;
+    height:100px;
+    width: calc(100% * (1/4) - 10px - 1px);
+}
+.full-width
+{
+    width:70%;
+}
+.mat-raised-button.mat-primary[_ngcontent-c2] {
+    background-color: #3f51b5;
+    margin-left: 150px;
+}
+
+.img
+{
+    height : 150px;
+    width : 150px;
+}
+.inputField {
+    
+    border:none;
+    position:relative;
+    font-size: 1.5em;
+    padding: 3px;
+    display: inline-block;
+    border-radius: 9999em;
+    height: 30px;  
+    width: 400px;
+    text-align: center;
+}
+:focus {
+    outline: none;
+}
+.card{
+    height: 350px;
+}
+.button
+{
+    float: right;
+    margin-top: 20px; 
+}

@@ -1,0 +1,35 @@
+<div class="container" *ngIf="!spin; else spinner">
+  <div class="row">
+    <div class="col-md-12 display-4">
+      Your Active Bookings
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-*">
+     <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Venue Name</th>
+            <th>Booking From Date</th>
+            <th>Booking To Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of Bookings | paginate: { itemsPerPage: 6, currentPage: p }">
+            <td>{{booking.VenueName}}</td>
+            <td>{{booking.BookingFromDate | customDate : booking.BookingFromDate}}</td>
+            <td>{{booking.BookingToDate | customDate : booking.BookingToDate }} </td>
+           <td><button mat-raised-button (click)="GoToRescheduleScreen(booking.BookingID)" color="primary">Re-schedule</button></td>
+           <td><button mat-raised-button (click)="CancelBooking(booking.BookingID)" color="warn">Cancel</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div> 
+       
+  </div>
+</div>  
+<ng-template #spinner>
+    <mat-spinner></mat-spinner>
+    loading...
+</ng-template>

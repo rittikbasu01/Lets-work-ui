@@ -1,0 +1,41 @@
+.FromDate
+{
+  
+}
+.ToDate
+{
+    margin-top: 30px;
+}
+.Buttons
+{
+    margin-top: 30px;
+}
+.ResetButton
+{
+    margin-left: 30px;
+}
+.AvailabilityCard
+{
+    width: 100%;
+    height: 400px;
+}
+mat-select
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.001
+}
+#bookingsbutton
+{
+    
+    width: 220px;
+    margin-top: 50px;
+    
+} 
+.ActiveBooking
+{
+    border: 2px solid #325103;
+}

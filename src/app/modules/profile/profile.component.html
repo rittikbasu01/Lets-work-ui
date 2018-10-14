@@ -1,0 +1,90 @@
+<div *ngIf="!spin; else spinner">
+    
+    <div class = "container">
+      <div  class="row" *ngIf="user" >
+      <div class="col-md-9">
+      <div class="display-4">{{user.UserName}}'s profile</div>  
+      <hr>
+      <br>
+      <form [formGroup]="userForm" (ngSubmit)="UpdateDetails(userForm)">
+        <mat-form-field class="example-form" >
+            <input matInput type="text" formControlName="UserName" placeholder="Username" pattern="^[A-Za-z]+[0-9]+$" (keypress)="changeUserNameStatus()" [readonly]="userNameReadOnly" />
+            <mat-icon *ngIf="this.canEdit" matSuffix (click)="this.userNameReadOnly=false;this.CheckAvailability=true;this.availibilityChecked=false">mode_edit</mat-icon> 
+            <mat-hint><span *ngIf="this.userNameStatus && this.GetUserName.dirty && this.availibilityChecked" style="color:green">Username is available</span><span *ngIf="!this.userNameStatus && this.GetUserName.dirty && this.availibilityChecked" style="color:red">Username is not available</span></mat-hint>
+            
+        </mat-form-field>
+          <button type="button" (click)="checkUserNameAvailable()" *ngIf="CheckAvailability" mat-raised-button >Check Availability</button>
+          <mat-error><span *ngIf="!GetUserName.valid && GetUserName.touched">Enter a username with atleast 5 characters and alphanumeric</span></mat-error>
+           <mat-form-field class="example-form">
+              <input matInput type="text" formControlName="FirstName" placeholder="First Name" pattern="^[A-Za-z][A-Za-z\s]*$" [readonly]="firstNameReadOnly"/>
+              <mat-icon *ngIf="this.canEdit" matSuffix (click)="this.firstNameReadOnly=false">mode_edit</mat-icon> 
+            </mat-form-field>
+            
+            <mat-error><span *ngIf="!GetFirstName.valid && GetFirstName.touched">Enter a valid name</span></mat-error>
+        
+          <mat-form-field class="example-form">
+            <input matInput type="text" formControlName="LastName" placeholder="Last Name" pattern="^[A-Za-z][A-Za-z\s]*$" [readonly]="lastNameReadOnly"/>
+            <mat-icon *ngIf="this.canEdit" matSuffix (click)="this.lastNameReadOnly=false" >mode_edit</mat-icon> 
+          </mat-form-field>
+          <mat-error><span *ngIf="!GetLastName.valid && GetLastName.touched">Enter a valid name</span></mat-error>
+    
+          <mat-form-field class="example-form">
+            <span matPrefix>+91 &nbsp;</span>
+            <input matInput type="text" formControlName="PhoneNumber" placeholder="Contact"[readonly]="phoneNumberReadOnly"/>
+            <mat-icon *ngIf="this.canEdit" matSuffix (click)="this.phoneNumberReadOnly=false" >mode_edit</mat-icon> 
+          </mat-form-field>
+            <br>
+            <label> Email Confirmed: 
+              <span *ngIf="user.EmailConfirmed; else no"> Yes </span>
+              <ng-template #no>No</ng-template>
+            </label>
+          
+          <mat-error><span *ngIf="!GetPhoneNumber.valid && GetPhoneNumber.touched">Enter a valid phone number</span></mat-error>
+        <div *ngIf="this.canEdit">
+          <button class="btn btn-primary" type="submit" value="submit" [disabled]="!this.userForm.valid || !this.userNameStatus">Submit</button>
+        </div>
+      </form>
+      <button type="button" *ngIf="this.canEdit"  class="btn btn-link" (click)=" sendChangePasswordEmail()"  title="Clicking this will send a change password mail">Request Change Password</button>         
+    </div>
+        
+    <div class="col-md-3">
+        <span *ngIf="profileImage;else generic">
+            <img src={{profileImage}} class="avatar">
+            <span *ngIf="this.profileImageUrl && this.canEdit"> <i class="material-icons" (click)="DeleteImage(userID)">
+            delete_outline
+            </i></span>
+            </span> 
+            <ng-template #generic>
+            <img src="../../../assets/images/ProfilePhoto.jpg" class="avatar">
+            
+            </ng-template>    
+          <div *ngIf="this.canEdit">
+              <button class="inputButton uploadimg" mat-raised-button color="primary"  id="fileupload-example-5">
+                  <input type="file" accept="image/*" (change)=" ImageUpload($event)"  #file>
+                    <span>Update Profile Picture</span>
+              </button>
+          </div>
+          <div>
+              <button mat-raised-button id="bookingsbutton"  color="primary">
+                  <mat-select (selectionChange)="ViewBookings($event)" id="select">
+                    <mat-option value="active">
+                      Active Bookings
+                    </mat-option >
+                    <mat-option value="closed">
+                        Closed Bookings
+                    </mat-option>
+                  </mat-select>
+                <span id="buttonname">Your Bookings</span>
+              </button>
+        </div>
+           
+    </div>
+    </div>
+    </div>
+    
+    </div>
+    <ng-template #spinner>
+        <mat-spinner></mat-spinner>
+        Processing the request....
+      </ng-template>
+    <router-outlet></router-outlet>

@@ -1,0 +1,75 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  html,body{ 
+    overflow-x: hidden;
+  }
+  .my-card
+  {
+      margin: auto;
+      width: 50%;
+  }
+  
+  
+    .example-full-width {
+      width: 60%;
+    }
+    .flex-container {
+      display: flex;
+      justify-content: flex-end;
+  
+    }
+    
+    .flex-container > div {
+      
+      width: 100px;
+      margin: 10px;
+      text-align: center;
+      line-height: 75px;
+      font-size: 30px;
+    }
+    #fileupload-example-5 
+    {
+      position: relative;
+      overflow: hidden;
+      
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    
+    }
+    
+    #fileupload-example-5 input {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: 0.001
+    }
+    .example-option-img {
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    
+    [dir='rtl'] .example-option-img {
+      margin-right: 0;
+      margin-left: 8px;
+    }
+    .preview
+    {
+      margin-top: 900px;
+    } 

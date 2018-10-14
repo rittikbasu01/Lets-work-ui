@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 display-4">
+          Your Closed Bookings
+        </div>
+      </div>
+      <hr>
+    <div class="row">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Venue Name</th>
+            <th>Booking From Date</th>
+            <th>Booking To Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of Bookings | paginate: { itemsPerPage: 6, currentPage: p }">
+            <td>{{booking.VenueName}}</td>
+            <td>{{booking.BookingFromDate | customDate : booking.BookingFromDate}}</td>
+            <td>{{booking.BookingToDate | customDate : booking.BookingToDate}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+</div>

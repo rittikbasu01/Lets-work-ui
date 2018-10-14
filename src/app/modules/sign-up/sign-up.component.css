@@ -1,0 +1,55 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  .container 
+  {
+   
+      width : 50%;
+      margin: auto;
+  }
+  mat-spinner
+  {
+    position : fixed;
+    transform: translate(-50%,-50%);
+    top:50%;
+    left: 50%;
+    transform: -webkit-translate(-50%,-50%);
+    transform: -ms-translate(-50%,-50%);
+    transform: -moz-translate(-50%,-50%);
+  }
+ 
+  #fileupload-example-5 
+  {
+     position: relative;
+    overflow: hidden;
+    
+      
+      border: none;
+      color:black;
+     
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      width:150px;
+      height: 50px; 
+  
+  
+  }
+  
+  #fileupload-example-5 input {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.001
+  }

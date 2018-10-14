@@ -1,0 +1,13 @@
+.mat-form-field-infix
+{
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    width: 313px;
+}
+
+.display5
+{
+    font-size:3.5rem;font-weight:300;line-height:1.0
+}

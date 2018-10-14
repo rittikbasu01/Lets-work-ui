@@ -1,0 +1,37 @@
+.mat-raised-button.mat-primary {
+    background-color: #3f51b5;
+    margin-left: 211px;
+}
+.container
+{
+    margin : 10px;
+}
+
+.addAdminButton
+{
+    margin-top: 10px;
+}
+.searchInput
+{
+    margin-left: 100px;
+}
+mat-form-field {
+    display: inline-block;
+    position: relative;
+    
+}
+.mat-form-field-infix {
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    width: 706px;
+}
+.full-width
+{
+    width:70%;
+}
+.mat-raised-button.mat-primary[_ngcontent-c2] {
+    background-color: #3f51b5;
+    margin-left: 222px;
+}

@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="display-4">
+        
+        Sign in 
+    </div>
+    <hr>
+    <div *ngIf="!spin; else spinner" class="col-md-12">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div>
+                <div>
+                    <mat-form-field class="example-form">
+                        <input matInput type="text" name="userName" autocomplete="off" placeholder="User Name" formControlName="userName">
+                    </mat-form-field>
+
+                </div>
+                <div>
+                    <mat-form-field class="example-form">
+                        <input matInput [type]="hide ? 'password' : 'text'" name="password" placeholder="Password" formControlName="password" (contextmenu)="$event.preventDefault()"
+                            autocomplete="off" (copy)="$event.preventDefault()" (cut)="$event.preventDefault()" (paste)="$event.preventDefault()">
+                        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                        </mat-form-field>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="../../assets/images/g_button.png" width="200px" (click)="socialSignIn('google')">
+                    </div>
+                    <div class="col-md-3">
+                        <button type="reset" mat-raised-button style="float:right" color="warn">Reset</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" mat-raised-button color="primary" style="float:right" [disabled]="!loginForm.valid">Sign in</button>
+                    </div>
+                    <div  class="col-md-6">
+                        <button type="button" (click)="redirectToSignUp()" class="btn btn-link">Not a registered user, sign up today with Visneto</button>
+                        <br>
+                        <button type="button" (click)="redirectToForgetPassword()" class="btn btn-link">Reset your password</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <ng-template #spinner>
+        <mat-spinner></mat-spinner>
+        Signing in...
+    </ng-template>
+</div>
+<router-outlet></router-outlet>

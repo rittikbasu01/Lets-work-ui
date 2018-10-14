@@ -1,0 +1,112 @@
+<div class="row">
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-header">
+        
+          Filter Search Results
+        
+      </div>
+      <form>
+        <div class="card-body">
+
+          <div>
+            <label style="font-weight:bold">Room Type</label>
+            <br>
+            <mat-radio-group name="roomValue" [(ngModel)]="roomValue">
+              <mat-radio-button value="Meeting Room">Meeting Room</mat-radio-button>
+              <br>
+              <mat-radio-button value="Board Room">Board Room</mat-radio-button>
+              <br>
+              <mat-radio-button value="Conference Room">Conference Room</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <br>
+          <div>
+            <label style="font-weight:bold">Air Conditioning Type</label>
+            <br>
+            <mat-radio-group name="acValue" [(ngModel)]="acValue">
+              <mat-radio-button value="Central">Central</mat-radio-button>
+              <br>
+              <mat-radio-button value="Split">Split</mat-radio-button>
+              <br>
+              <mat-radio-button value="Window">Window</mat-radio-button>
+              <br>
+              <mat-radio-button value="None">None</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <br>
+          <div>
+            <label style="font-weight:bold">Vending Machines</label>
+            <br>
+
+            <mat-checkbox name="foodVendingMachine" [(ngModel)]="foodVendingMachine">Food</mat-checkbox>
+            <br>
+            <mat-checkbox name="waterVendingMachine" [(ngModel)]="waterVendingMachine">Water</mat-checkbox>
+            <br>
+            <mat-checkbox name="coffeeVendingMachine" [(ngModel)]="coffeeVendingMachine">Coffee</mat-checkbox>
+
+          </div>
+          <br>
+          <div>
+            <label style="font-weight:bold">WiFi Network Type</label>
+            <br>
+            <mat-form-field>
+              <mat-select name="wifiNetworkType" [(ngModel)]="wifiNetworkType" placeholder="Wifi Network Type">
+                <mat-option *ngFor="let wifiType of wirelessNetworkTypes" value="{{wifiType}}">{{wifiType}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="card-footer">
+            <button type="reset" mat-raised-button color="primary">Reset</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <div>
+      <mat-form-field class="full-width">
+        <input pattern="[A-Za-z]" matInput [(ngModel)]="searchText" placeholder="Venue name" style="width:100%">
+      </mat-form-field>
+    </div>
+    <div>
+      <table class="table table-hover table-responsive">
+        <thead>
+          <tr>
+            <th>Venue Name</th>
+            <th>Venue City</th>
+            <th>Hourly Rate</th>
+            <th>Room Type</th>
+            <th>Air Conditioning Type</th>
+            <th>Vending Machine Types</th>
+            <th>Wireless Network Type </th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of Venue | venueSearchFilter :searchText:roomValue:acValue:foodVendingMachine:waterVendingMachine:coffeeVendingMachine:wifiNetworkType| paginate: { itemsPerPage: 10, currentPage: p } ">
+            <td>{{data.VenueName}}</td>
+            <td>{{data.VenueCity}}</td>
+            <td>{{data.HourlyRate}}</td>
+            <td>{{data.RoomType}}</td>
+            <td>{{data.AirConditioningType}}</td>
+            <td><span *ngIf="data.IsFoodVendingMachineAvailable">Food</span>
+              <br>
+              <span *ngIf="data.IsWaterVendingMachineAvailable">Water</span>
+              <br>
+              <span *ngIf="data.IsCoffeeVendingMachineAvailable">Coffee</span>
+            </td>
+            <td>{{data.WirelessNetworkType}}</td>
+            <td><button type="button" mat-raised-button color="primary" (click)="onBooking(data.VenueID)">Book</button></td>
+            <td><button type="button" mat-raised-button color="warn" (click)="showDetails(data.VenueID)">Show Details</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+
+</div>
+<router-outlet></router-outlet>

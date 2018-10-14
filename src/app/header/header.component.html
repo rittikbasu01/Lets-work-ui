@@ -1,0 +1,40 @@
+<div class="header">
+  <mat-toolbar color="primary">
+  
+  <a class="iconcolor" (click)="redirectToHome()"><mat-icon class="iconcolor" (click)="redirectToHome()">home</mat-icon></a>&nbsp;&nbsp;
+      
+        
+  <span>Visneto</span>
+  <span class="spacer"></span>
+ 
+  
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <div *ngIf="!GetLoginStatus()">
+            Hello User!!
+        </div>
+        <button mat-menu-item type="button" *ngIf="GetLoginStatus()" (click)="getProfileDetails()">
+            <span>Hello {{GetUserName()}}!!</span>
+        </button>
+        
+      <div *ngIf="!GetLoginStatus()">
+        <button mat-menu-item routerLink="signin">
+            Sign-In
+        </button>
+      </div>
+      <div *ngIf="GetLoginStatus()">
+        <button mat-menu-item (click)="LoggingOut()">
+            Sign-Out
+        </button>
+      </div>
+      <div *ngIf="!GetLoginStatus()">
+      <button mat-menu-item routerLink="signup">
+        Sign-Up
+      </button>
+      </div>
+    </mat-menu>
+  
+  </mat-toolbar>
+  </div>

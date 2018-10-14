@@ -1,0 +1,166 @@
+<div *ngIf="!spin; else spinner">
+    <div class="row">
+        <div class="col-md-6 card">
+          <div class="display-4">
+            Edit Venue details
+          </div>
+          <hr>
+        <br><br>
+          
+            <form [formGroup]="AddVenueForm" (ngSubmit)="OnSubmit()">
+        
+              <mat-form-field class="example-full-width">
+                <input matInput name="VenueName" pattern="^[A-Za-z][A-Za-z\s]*[0-9]*$" formControlName="VenueName" placeholder="Venue Name">
+              </mat-form-field>
+              <mat-error *ngIf="!this.VenueName.valid && this.VenueName.touched">Please enter Venue Name!!
+              </mat-error>
+              <br>
+        
+              <mat-form-field class="example-full-width">
+                <input matInput formControlName="VenueCity" pattern="^[A-Za-z][A-Za-z\s]*$" placeholder="Venue City">
+              </mat-form-field>
+              <mat-error>
+                <span *ngIf="!this.VenueCity.valid && this.VenueCity.touched">Please enter Venue City!! </span>
+              </mat-error><br>
+        
+              <mat-form-field class="example-full-width">
+                <input matInput pattern="^[A-Za-z][A-Za-z\s]*$" formControlName="VenueState" placeholder="Venue State">
+              </mat-form-field>
+              <mat-error>
+                <span *ngIf="!this.VenueState.valid && this.VenueState.touched">Please enter Venue State!! </span>
+              </mat-error><br>
+              
+                  <label >
+                    Contact Number<br>
+                    <span>{{this.contactNumber}}</span></label>
+              
+              <br>
+              <br><br>
+              <mat-form-field class="example-full-width">
+                <input matInput formControlName="NumberOfProjectors" placeholder="Number of Projectors" type="number">
+              </mat-form-field>
+              <mat-error>
+                <span *ngIf="!this.NumberOfProjectors.valid && this.NumberOfProjectors.touched">Please enter Number Of  Projectors!! </span>
+              </mat-error>
+              <br>
+        
+              <mat-form-field class="example-full-width">
+                <input matInput formControlName="SeatCapacity" placeholder="Seating Capacity" type="number">
+              </mat-form-field>
+              <mat-error>
+                <span *ngIf="!this.SeatCapacity.valid && this.SeatCapacity.touched">Please enter Seating Capacity!! </span>
+              </mat-error>
+              <br>
+        
+              <mat-card-subtitle style="font-weight:bold"> Room Type </mat-card-subtitle>
+              <br>
+              <mat-radio-group formControlName="RoomType">
+                <div *ngFor="let roomType of roomTypes" style="display: inline-block">
+                  <mat-radio-button name="RoomType" [value]="roomType"> {{ roomType }}</mat-radio-button> &nbsp;
+                </div>
+              </mat-radio-group>
+              <br>
+              <br>
+
+              <mat-form-field class="example-full-width">
+                  <input matInput formControlName="NumberOfPhones" placeholder="Number Of Phones" type="number">
+                </mat-form-field>
+                <mat-error>
+                  <span *ngIf="!this.NumberOfPhones.valid && this.NumberOfPhones.touched">Please enter Number Of Phones!! </span>
+                </mat-error>
+              <br>
+
+              <mat-form-field class="example-full-width">
+                <input matInput formControlName="NumberOfMicroPhones" placeholder="Number Of Microphones" type="number">
+              </mat-form-field>
+              <mat-error>
+                <span *ngIf="!this.NumberOfMicroPhones.valid && this.NumberOfMicroPhones.touched">Please enter Number Of MicroPhones!! </span>
+              </mat-error>
+              <br>
+
+
+              <mat-form-field class="example-full-width">
+                  <input matInput formControlName="HourlyRate" placeholder="Hourly Rate" type="number">
+              </mat-form-field>
+              <mat-error>
+                  <span *ngIf="!this.HourlyRate.valid && this.HourlyRate.touched">Please enter the rate per hour!! </span>
+              </mat-error>
+              <br>
+
+              <mat-card-subtitle style="font-weight:bold"> Air Conditioning </mat-card-subtitle>
+              <br>
+              <mat-radio-group formControlName="AirConditioningType">
+                <div *ngFor="let acType of acTypes" style="display: inline-block">
+                  <mat-radio-button name="AirConditioningType" [value]="acType"> {{ acType }}</mat-radio-button> &nbsp;
+                </div>
+              </mat-radio-group>
+              <br>
+              <br>
+              <mat-card-subtitle style="font-weight:bold">Food Vending Machines</mat-card-subtitle>
+              <div class="row">
+                
+                <div class="col-md-4">
+                  <mat-checkbox formControlName="IsFoodVendingMachineAvailable">Food</mat-checkbox>
+                </div>
+                <div class="col-md-4">
+                  <mat-checkbox formControlName="IsWaterVendingMachineAvailable">Water</mat-checkbox>
+                </div>
+                <div class="col-md-4">
+                  <mat-checkbox formControlName="IsCoffeeVendingMachineAvailable">Coffee</mat-checkbox>
+                </div>
+              </div>
+              <br>
+              
+              <mat-form-field class="example-full-width">
+                <mat-select formControlName="WirelessNetworkType" placeholder="Select WiFi">
+                  <mat-option value="802.11ac">802.11ac</mat-option>
+                  <mat-option value="802.11b">802.11b</mat-option>
+                  <mat-option value="802.11g">802.11g</mat-option>
+                  <mat-option value="802.11n">802.11n</mat-option>
+                  <mat-option value="None">None</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-error>
+                <span *ngIf="!this.WirelessNetworkType.valid && this.WirelessNetworkType.touched">Please Select WiFi!! </span>
+              </mat-error>
+              <br>
+              <mat-form-field class="Description">
+                <textarea matInput formControlName="Description" placeholder="Description"> </textarea>
+              </mat-form-field>
+              
+              <br>
+             <br>
+               
+                  <div class="flex-container">
+                    
+                    <div> <button mat-raised-button class="submitButton" [disabled]="!AddVenueForm.valid" type="submit" color="primary">Submit</button>              
+                  </div>
+                </div>   
+            </form>
+       
+        </div>
+        <div class="col-md-4" *ngIf="doesVenueHasImages">
+        <span class="card" *ngFor="let venueImage of venue.VenueImages"> <img src={{venueImage.HostedImageURL}} height="300px"  width="300px"> 
+         <i class="material-icons" (click)="EditImage($event,venueImage)">
+          delete_outline
+        </i> 
+        </span>
+        <div>
+          <br><br>
+        </div>
+      </div> 
+  
+       <div class="col-md-2">
+          <button mat-raised-button color="primary"  id="fileupload-example-5">
+              <input type="file"  accept="image/*" (change)="OnFileUpload(file.files, $event)"  #file multiple>
+                Upload Venue Images
+          </button>
+       </div>
+
+    </div>
+</div>
+<ng-template #spinner>
+  <mat-spinner></mat-spinner>
+  Processing the request....
+</ng-template>
+    <router-outlet></router-outlet>

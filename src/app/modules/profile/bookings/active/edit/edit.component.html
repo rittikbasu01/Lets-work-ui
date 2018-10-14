@@ -1,0 +1,79 @@
+<div class="container"  *ngIf="!spin; else spinner">
+  <div class="row">
+     <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-header bg-dark text-white">
+              Re-Schedule
+            </div>
+            <div class="card-body">
+              <form [formGroup]="BookForm" (ngSubmit)="OnConfirm(BookForm.value)">
+                      <div class="FromDate">
+                          <p-calendar  name="FromDate" placeholder="Enter from date" showTime="true" hourFormat="24" formControlName="BookingFromDate" ></p-calendar>
+                          <div>
+                          <mat-error><span *ngIf="!this.GetFromDate.valid && this.GetFromDate.touched">Select proper date and time</span></mat-error>
+                          </div>                          
+                      </div>
+                      <div class="ToDate">
+                        <p-calendar  name="ToDate" placeholder="Enter to date" showTime="true" hourFormat="24" formControlName="BookingToDate"></p-calendar>
+                       <div>
+                        <mat-error><span *ngIf="!this.GetToDate.valid && this.GetToDate.touched">Select proper date and time</span></mat-error>
+                       </div>
+                      </div>
+                      <div class="Buttons">
+                        <button class="SubmitButton" mat-raised-button type="submit" color="primary">Confirm</button>
+                         <span class="ResetButton">
+                         <button mat-raised-button type="reset" color="warn" >Reset</button>
+                        </span>
+                      </div>
+              </form>
+            </div>
+        </div>
+        <button mat-raised-button id="bookingsbutton"  color="primary">
+            <mat-select (selectionChange)="GetAvailability($event)" id="select">
+              <mat-option value="1">
+                  Show active bookings for next 1 week
+              </mat-option >
+              <mat-option value="2">
+                  Show active bookings for next 1 month
+              </mat-option>
+              <mat-option value="3">
+                  Show active bookings for next 1 year
+              </mat-option>
+            </mat-select>
+          <span id="buttonname">Show Active Bookings</span>
+        </button>
+     </div>
+
+     <div class="col-md-6">
+       <div class="card AvailabilityCard">
+          <div class="card-header bg-dark text-white">
+             Active bookings
+            </div>
+         <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Booking From Date</th>
+                    <th>Booking To Date</th>
+                    <th>Venue Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let booking of bookings | paginate: { itemsPerPage: 10, currentPage: p }"  [ngClass]="{'ActiveBooking': booking.Email == Email}">
+                    <td>{{booking.BookingFromDate | customDate : booking.BookingFromDate}}</td>
+                    <td>{{booking.BookingToDate | customDate : booking.BookingToDate }}</td>
+                    <td>{{booking.VenueName}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div> 
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+         </div>
+       </div>
+     </div>
+
+</div>
+<ng-template #spinner>
+    <mat-spinner></mat-spinner>
+    Loading...
+</ng-template>

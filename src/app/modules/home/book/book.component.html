@@ -1,0 +1,45 @@
+<div class="container">
+
+  <div class="card" *ngIf="!spinStatus; else spinner">
+    <form [formGroup]="BookForm" (ngSubmit)="onSubmit()">
+      <div class="card-header display-4">
+        Booking Details
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <label>From Date and Time</label>
+          </div>
+          <div class="col-md-6">
+            <label>{{bookedFromDate | date : 'long'}}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            To Date and Time:
+          </div>
+          <div class="col-md-6">
+            <label>{{bookedToDate | date : 'long'}}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            Referral Code
+          </div>
+          <div class="col-md-6">
+            <mat-form-field>
+              <input type="text" placeholder="Referral Code" matInput formControlName="ReferralCode" pattern="^[A-Za-z]+[0-9]+?$">
+            </mat-form-field>
+          </div>
+        </div> 
+      </div>
+      <div class="card-footer">
+        <button mat-raised-button color="primary" type="submit">Proceed to Checkout</button>
+      </div>
+    </form>
+  </div>
+  <ng-template #spinner>
+    <mat-spinner></mat-spinner>
+    Processing the request....
+  </ng-template>
+</div>

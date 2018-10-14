@@ -1,0 +1,69 @@
+#fileupload-example-5 
+{
+  position: relative;
+  overflow: hidden;
+  
+   
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+}
+
+#fileupload-example-5 input {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.001
+}
+.inputButton
+{
+    height:50px;
+}
+i{
+    color: red;
+}
+
+mat-select
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.001
+}
+.avatar {
+    vertical-align: middle;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+} 
+#bookingsbutton
+{
+    
+    width: 190px;
+    margin-top: 50px;
+    
+} 
+.submitbutton
+{
+    margin-top: 41px;
+}
+.btn-link {
+    margin-left: -14px;
+    font-weight: 400;
+   
+}
+.example-form
+{
+    width : 100%;
+
+}

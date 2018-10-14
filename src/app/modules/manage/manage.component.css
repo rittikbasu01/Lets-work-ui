@@ -1,0 +1,43 @@
+ .sidenav-container {
+  height: 80%;
+  margin: 0;
+
+  
+}
+app-header{
+  margin-left:10px;
+}
+
+.sidenav {
+  width: 200px;
+  position:absolute;
+  top:0px;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  margin: 0;
+  
+}
+.mat-toolbar.mat-primary 
+{
+  width:10%;
+}
+
+.side-nav-height
+{
+  height: 800px;
+}
+a {
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+}
+app-footer
+{
+  width: 100%;
+} 
+.material-icons:hover{
+  cursor: pointer;
+}

@@ -1,0 +1,68 @@
+
+<div class="row" style="color:white;font-size:100%">
+   
+  <div class="col-lg-8">
+    
+      <mat-card>
+    <h2>Venue :  {{VenueData.VenueName}}</h2>
+    <h4> Details   </h4>
+            
+    <table class="table table-hover" >
+      <tbody>
+        <tr>
+          <td>Number Of Projectors</td><td>{{VenueData.NumberOfProjectors}}</td>
+        </tr>
+        <tr>
+          <td>Seating Capacity</td><td>{{VenueData.SeatCapacity}}</td>
+        </tr>
+        <tr>
+            <td>Contact NUmber</td><td>{{VenueData.ContactNumber}}</td>
+          </tr>
+        <tr>
+          <td>Number Of Microphones</td><td>{{VenueData.NumberOfMicroPhones}}</td>
+        </tr>
+        <tr>
+          <td>Room Type</td><td>{{VenueData.RoomType}}</td>
+        </tr>
+        <tr>
+          <td>Number of Phones</td><td>{{VenueData.NumberOfPhones}}</td>
+        </tr>
+        <tr>
+          <td>Wireless Network</td><td>{{VenueData.WirelessNetworkType}}</td>
+        </tr>
+        <tr>
+          <td>HourlyRate</td><td>{{VenueData.HourlyRate}}<td>
+        </tr>
+        <tr>
+          <td>AirConditioning Type</td><td>{{VenueData.AirConditioningType}}</td>
+        </tr>
+        <tr>
+          <td>Food VendingMachine Available</td><td>{{VenueData.IsFoodVendingMachineAvailable}}</td>
+      </tr>
+      <tr>
+          <td>Water VendingMachine Available</td><td>{{VenueData.IsWaterVendingMachineAvailable}}</td>
+      </tr>
+      <tr>
+          <td>Coffee VendingMachine Available</td><td>{{VenueData.IsCoffeeVendingMachineAvailable}}</td>
+      </tr>
+      
+      </tbody>
+      
+    </table><br><br><br>
+  </mat-card>
+    
+   </div>
+   
+<div class="col-lg-4">
+   
+  <div *ngFor="let image of VenueData.VenueImages">
+   <img src={{image.HostedImageURL}} height="300px" width="400px"/>   
+  </div>
+</div>
+<br><br>
+</div>
+
+
+
+
+  

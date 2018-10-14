@@ -1,0 +1,32 @@
+<div class = "container">
+
+<div class="row">
+  <div class="col-md-12 display-4">
+    Verify New User Email
+  </div>
+</div>
+<hr>
+<br>
+
+<div class="row">
+  <div class="col-md-12">
+    <div *ngIf="!spin, else spinner">
+      <form [formGroup]="verifyForm" (ngSubmit)="onSubmit()">
+          <mat-form-field>
+              <input type="email" matInput formControlName="verifyEmail" placeholder="Enter the email"/>
+          </mat-form-field>
+          <mat-error>
+            <span *ngIf="!this.Email.valid && this.Email.touched"></span>
+          </mat-error>
+          <button type="submit" mat-raised-button [disabled]="!verifyForm.valid">Verify</button>
+      </form>
+    </div>
+
+    <ng-template #spinner>
+      <mat-spinner></mat-spinner>
+      Verifying the email....
+    </ng-template>
+  </div>
+</div>
+
+</div>

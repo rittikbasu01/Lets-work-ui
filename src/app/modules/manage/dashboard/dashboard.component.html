@@ -1,0 +1,122 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="font-style display-3"><strong> Welcome Admin {{userName}}, </strong> </h1>
+    <p class="font-style display-4">Manage Visneto by adding more admins, more venues and bookings.</p>
+  </div>
+
+
+  <div class="row" >
+    <div class="col-md-1">
+      <i class="fa fa-wrench" style="font-size:72px"></i>
+    </div>
+    <div class="col-md-11">
+      <h1 class="display-5">{{ userName }}'s Dashboard</h1>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row card-deck">
+
+    <div class="col-lg-4">
+      <div class="card bg-warning">
+        <div class="card-body text-left">
+          <i class="fa fa-users" style="font-size:72px"></i>
+
+          <div style="overflow: hidden;">
+            <p class="card-text display-5" style="float: left;">Admins</p>
+            <p class="card-text text-right display-4" style="float:right;">{{adminDashboard.AdminCount}}</p>
+          </div>
+        </div>
+        <div class="card-footer bg-light">
+          <button class="pull-left btn btn-dark" routerLink="admin">View Details</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card bg-success">
+        <div class="card-body text-left">
+          <i class="fa fa-cart-arrow-down" style="font-size:72px"></i>
+
+          <div style="overflow: hidden;">
+            <p class="card-text display-5" style="float: left;">Bookings</p>
+            <p class="card-text text-right display-4" style="float:right;">{{adminDashboard.BookingCount}}</p>
+          </div>
+        </div>
+        <div class="card-footer bg-light">
+          <button class="pull-left btn btn-dark" routerLink="booking">View Details </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card bg-danger">
+        <div class="card-body text-left">
+          <i class="fa fa-map-o" style="font-size:72px"></i>
+
+          <div style="overflow: hidden;">
+            <p class="card-text display-5" style="float: left;">Venues</p>
+            <p class="card-text text-right display-4" style="float:right;">{{adminDashboard.VenueCount}}</p>
+          </div>
+        </div>
+        <div class="card-footer bg-light">
+          <button class="pull-left btn btn-dark" routerLink="venue">View Details </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="row">
+      <div class="col-md-1">
+        <i class="fa fa-bar-chart" style="font-size:72px"></i>
+      </div>
+      <div class="col-md-11">
+        <h1 class="display-5">Venue - Bookings Frequency</h1>
+      </div>
+    </div>
+
+    <hr>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 table table-hover">
+      <!-- Venue Column -->
+      <ng-container matColumnDef="Venue Name">
+        <th mat-header-cell *matHeaderCellDef> <h4> Venue </h4> </th>
+        <td mat-cell *matCellDef="let element" class="font-weight-light"> 
+            <p style="font-size: 16px;">
+                {{element.VenueName }} 
+            </p>
+          </td>
+      </ng-container>
+
+      <!-- Venue Column -->
+      <ng-container matColumnDef="Venue City">
+          <th mat-header-cell *matHeaderCellDef> <h4> City </h4> </th>
+          <td mat-cell *matCellDef="let element" class="font-weight-light"> 
+              <p style="font-size: 16px;">
+                  {{element.VenueCity}} 
+              </p>
+            </td>
+        </ng-container>
+
+      <!-- Bookings Column -->
+      <ng-container matColumnDef="BookingCount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> <h4> Booking </h4> </th>
+        <td mat-cell *matCellDef="let element"> 
+          <p style="font-size: 16px;">  {{element.BookingCount}} </p>
+         </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
+<router-outlet></router-outlet>

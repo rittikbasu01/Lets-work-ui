@@ -1,0 +1,43 @@
+<div class="searchbar">
+  <mat-form-field>
+      <input class="inputField" pattern="/^[a-zA-Z0-9]*$" matInput [(ngModel)]="BookingID" placeholder="Enter Booking ID">
+  </mat-form-field>
+</div>
+
+<div class="row">
+    <div class = "col-md-12 display-4">
+      Bookings List
+    </div>
+  </div>
+
+  <hr>
+  <br>
+
+<div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Booking ID</th>
+        <th>Booking From Date</th>
+        <th>Booking To Date</th>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Venue City</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of Bookings | BookingFilterPipe:BookingID| paginate: { itemsPerPage: 10, currentPage: p }">
+        <td>{{booking.BookingID}}</td>
+        <td>{{booking.BookingFromDate | customDate : booking.BookingFromDate}}</td>
+        <td>{{booking.BookingToDate | customDate : booking.BookingToDate}}</td>
+        <td>{{booking.UserName}}</td>
+        <td>{{booking.Email}}</td>
+        <td>{{booking.VenueCity}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+<router-outlet></router-outlet>

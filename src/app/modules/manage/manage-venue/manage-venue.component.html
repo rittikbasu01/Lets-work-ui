@@ -1,0 +1,50 @@
+<div class="searchbar">
+
+    <div class="row">
+        <div class="col-md-10">
+            <mat-form-field class="full-width">
+                <input matInput [(ngModel)]="searchText" pattern="^[a-zA-Z\s]*$" placeholder="Enter venue name">
+            </mat-form-field>
+        
+            <mat-form-field class="full-width">
+                <input matInput [(ngModel)]="searchCity" pattern="^[a-zA-Z\s]*$" placeholder="Enter venue city">
+            </mat-form-field>
+        </div>
+        <div class="col-md-2 button">
+            <button mat-raised-button color="primary" type="button" (click)="goToAddVenue()"> Add Venue </button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+        <div class = "col-md-12 display-4">
+          Venues List
+        </div>
+</div>
+
+<hr>
+<br>
+
+<div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Venue Name</th>
+                <th>Venue City</th>
+                <th>Venue State</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let venue of venues| VenueFilterPipe:searchText:searchCity| paginate: { itemsPerPage: 10, currentPage: p }">
+                <td>{{venue.VenueName}}</td>
+                <td>{{venue.VenueCity}}</td>
+                <td>{{venue.VenueState}}</td>
+                <td><button mat-raised-button color="primary" (click)="gotoEditVenue(venue)" routerLink="Edit">Edit Venue</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+<router-outlet></router-outlet>

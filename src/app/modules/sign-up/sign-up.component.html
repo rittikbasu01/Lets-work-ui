@@ -1,0 +1,92 @@
+<div class="container">
+
+  <div class="row">
+    <div class = "col-md-12 display-4">
+      User Sign-Up
+    </div>
+  </div>
+  <hr>
+
+  <div class="row" *ngIf="!spin; else spinner">
+
+    <div class="col-md-8">
+
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div>
+        <mat-form-field class="example-form">
+          <input matInput type="text" formControlName="UserName" pattern="^[A-Za-z]+[0-9]+$" placeholder="Username"/>
+        </mat-form-field>
+        <mat-error><span *ngIf="!GetUserName.valid && GetUserName.touched">Enter a username with atleast 5 characters and alphanumeric</span></mat-error>
+      </div>
+      <div>
+          <mat-form-field class="example-form">
+            <input matInput type="text" formControlName="FirstName" pattern="^[A-Za-z][A-Za-z\s]*$" placeholder="First Name"/>
+          </mat-form-field>
+          <mat-error><span *ngIf="!GetFirstName.valid && GetFirstName.touched">Enter a valid name</span></mat-error>
+      </div>
+      <div>
+        <mat-form-field class="example-form">
+          <input matInput type="text" formControlName="LastName"  pattern="^[A-Za-z][A-Za-z\s]*$" placeholder="Last Name"/>
+        </mat-form-field>
+        <mat-error><span *ngIf="!GetLastName.valid && GetLastName.touched">Enter a valid name</span></mat-error>
+      </div>
+      <div>
+        <mat-form-field class="example-form">
+            <span matPrefix>+91 &nbsp;</span>
+          <input matInput type="text" formControlName="PhoneNumber" placeholder="Contact"/>
+        </mat-form-field>
+        <mat-error><span *ngIf="!GetPhoneNumber.valid && GetPhoneNumber.touched">Enter a valid phone number</span></mat-error>
+      </div>
+      <div>
+          <mat-form-field class="example-form">
+              <input matInput type="email" formControlName="UserEmail" placeholder="Email" pattern="[^\s]{1}[a-zA-Z0-9_]+(?:\.[a-zA-Z0-9_]+)*@[^-](?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?"/> 
+            </mat-form-field>
+            <mat-error><span *ngIf="!GetUserEmail.valid && GetUserEmail.touched">Enter a valid email id</span></mat-error>
+      </div>
+      <div>
+          <mat-form-field class="example-form">
+              <input matInput [type]="hide ? 'password' : 'text'" pattern="^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[+=?@#-^*%!]).*$" formControlName="Password" (contextmenu)="$event.preventDefault()" autocomplete="off" (copy) = "$event.preventDefault()" (cut)="$event.preventDefault()" (paste)="$event.preventDefault()" placeholder="Password" /> 
+              <mat-hint align="start"><strong>Please choose a strong password</strong> </mat-hint>
+              <mat-hint align="end">Password Length: {{GetPassword.value.length}}</mat-hint>
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>  
+          </mat-form-field>
+          
+          <mat-error><span *ngIf="!GetPassword.valid && GetPassword.touched">Password should contain uppercase,lowercase, nummeric and 8 characters long</span></mat-error>
+      </div>
+      <div>
+          <mat-form-field class="example-form">
+              <input matInput [type]="hideC ? 'password' : 'text'" formControlName="ConfirmPassword" (contextmenu)="$event.preventDefault()" autocomplete="off" (copy) = "$event.preventDefault()" (cut)="$event.preventDefault()" (paste)="$event.preventDefault()" placeholder="Confirm Password" (change)="validPassword()" /> 
+              <mat-hint align="start"><strong>Please confirm the password again</strong> </mat-hint>
+              <mat-hint align="end">Password Length: {{ GetConfirmPassword.value.length }}</mat-hint>
+              <mat-icon matSuffix (click)="hideC = !hideC">{{hideC ? 'visibility' : 'visibility_off'}}</mat-icon>  
+          </mat-form-field>
+          <mat-error><span *ngIf="!validPassword() && GetConfirmPassword.dirty">Confirm password not matching</span></mat-error>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+        </div>
+
+        <div class="col-md-3">
+            <button type="reset" mat-raised-button color="warn">Reset</button>
+          </div>
+
+        <div class="col-md-3">
+            <button type="submit" mat-raised-button color="primary" [disabled]="!registerForm.valid || !passwordConfirmStatus">Sign Up</button>
+        </div>  
+        
+      </div>
+    </form>
+   
+    </div>
+    </div>
+    </div>
+
+
+  <ng-template #spinner>
+    <mat-spinner></mat-spinner>
+    Signing up....
+  </ng-template>
+
+
+<router-outlet></router-outlet>

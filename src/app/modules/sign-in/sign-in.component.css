@@ -1,0 +1,20 @@
+.example-form {
+    min-width: 150px;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  .container 
+  {
+      width : 50%;
+      margin: auto;
+  }
+
+  .google_sign_in
+  {
+    background-image: "assets/images/g_button.png"; 
+    width: 200px;
+  }

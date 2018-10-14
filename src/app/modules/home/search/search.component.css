@@ -1,0 +1,32 @@
+.example-container > * {
+    width: 50%;
+   left:25%;
+    margin-top:50px; 
+    font-size: 20px;
+    
+  }
+  .homeback{
+    background-image: url('/assets/images/visneto1.jpg');
+  }
+  .child {
+    display: inline-block;
+    background:blue;
+    margin:10px 0 0 2%;
+    margin-top: 50px;
+    flex-grow: 1;
+    height:100px;
+    width: calc(100% * (1/4) - 10px - 1px);
+}
+.img
+{
+    height : 150px;
+    width : 150px;
+}
+.homeback{
+  height: 100%;
+  background-image: url('/assets/images/visneto1.jpg');
+}
+.full-width
+{
+  width: 100%;
+}
